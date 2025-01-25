@@ -1,0 +1,140 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &312960542509585354
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: aae168d6e8513084b895ad88a7ddd5a2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.6
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: aae168d6e8513084b895ad88a7ddd5a2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.72
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: aae168d6e8513084b895ad88a7ddd5a2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 25.16
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: aae168d6e8513084b895ad88a7ddd5a2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: aae168d6e8513084b895ad88a7ddd5a2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: aae168d6e8513084b895ad88a7ddd5a2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: aae168d6e8513084b895ad88a7ddd5a2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: aae168d6e8513084b895ad88a7ddd5a2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: aae168d6e8513084b895ad88a7ddd5a2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: aae168d6e8513084b895ad88a7ddd5a2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: aae168d6e8513084b895ad88a7ddd5a2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3d73b3b7ec9c68742b98d17e7de7d0a1, type: 2}
+    - target: {fileID: 919132149155446097, guid: aae168d6e8513084b895ad88a7ddd5a2,
+        type: 3}
+      propertyPath: m_Name
+      value: Background_gradient
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: aae168d6e8513084b895ad88a7ddd5a2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1419774557201665521}
+  m_SourcePrefab: {fileID: 100100000, guid: aae168d6e8513084b895ad88a7ddd5a2, type: 3}
+--- !u!1 &618877872554274459 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: aae168d6e8513084b895ad88a7ddd5a2,
+    type: 3}
+  m_PrefabInstance: {fileID: 312960542509585354}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1419774557201665521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618877872554274459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8b316c197677845a01008021ba53a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gradient:
+    serializedVersion: 2
+    key0: {r: 0.3490566, g: 0.2368507, b: 0.1761748, a: 1}
+    key1: {r: 0.8773585, g: 0.75906503, b: 0.7076807, a: 1}
+    key2: {r: 0.6886792, g: 0.44195375, b: 0.36707902, a: 0}
+    key3: {r: 0.4716981, g: 0.29935107, b: 0.26477394, a: 0}
+    key4: {r: 1, g: 1, b: 1, a: 0}
+    key5: {r: 1, g: 1, b: 1, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 11226
+    ctime1: 26244
+    ctime2: 51427
+    ctime3: 65535
+    ctime4: 65535
+    ctime5: 65535
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: 0
+    m_NumColorKeys: 4
+    m_NumAlphaKeys: 2
+  savingPath: /LKHGames/GradientTextureGenerator/GeneratedTexture/
+  width: 256
+  height: 64
+  onPlayMode: 2
+  propertiesName: _GradientTexture
+  materialRenderer: {fileID: 1411401661789622094}
+  textureFormat: 0
+--- !u!23 &1411401661789622094 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: aae168d6e8513084b895ad88a7ddd5a2,
+    type: 3}
+  m_PrefabInstance: {fileID: 312960542509585354}
+  m_PrefabAsset: {fileID: 0}
