@@ -11,13 +11,13 @@ public class OnClickBubbleManager : BubbleManager, IPointerDownHandler
         base.Update();
         //Debug.Log(currentBubble);
         //Debug.Log(currentBubble.launched);
+        launchBehaviour();
+    }
+
+    protected virtual void launchBehaviour()
+    {
         if (currentBubble != null && !currentBubble.launched)
         {
-            Debug.Log("aaaaaaaaaaaaaaaaa");
-            Debug.Log(Input.GetMouseButton(0));
-            Debug.Log(currentBubble.transform.localScale.x);
-            Debug.Log( maxScale);
-
             if (Input.GetMouseButton(0) && currentBubble.transform.lossyScale.x < maxScale)
             {
                 float newScale = currentBubble.transform.localScale.x + upscaleSpeed * Time.deltaTime;
@@ -32,7 +32,6 @@ public class OnClickBubbleManager : BubbleManager, IPointerDownHandler
 
     public virtual void OnPointerDown(PointerEventData evData)
     {
-        Debug.Log("pop");
         ShowNextBubble();
     }
 }

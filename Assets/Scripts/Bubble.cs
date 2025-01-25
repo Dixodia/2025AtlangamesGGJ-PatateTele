@@ -15,7 +15,7 @@ public class Bubble : MonoBehaviour
     // Constructor for creating a bubble
     public void setBubble(GameObject bubblePrefab, Transform parentTransform, Color color, float duration, float initialUpwardSpeed)
     {
-        GetComponent<MeshRenderer>().material.color = color;
+        GetComponent<SpriteRenderer>().color = color;
         displayDuration = duration;
         initUpSpeed = initialUpwardSpeed;
         rb = gameObject.GetComponent<Rigidbody>();
@@ -35,12 +35,13 @@ public class Bubble : MonoBehaviour
         }
     }
 
-    public void launchBubble()
+    public float launchBubble()
     {
         launched = true;
         // Set the initial upward velocity
         rb.linearVelocity = new Vector2(0, initUpSpeed);
         Destroy(gameObject, displayDuration);  // Destroy after a set duration (or adjust for your needs)
+        return transform.localScale.x;
     }
 
     // Optionally: You could add a method to destroy it manually

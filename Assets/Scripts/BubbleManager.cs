@@ -32,7 +32,7 @@ public class BubbleManager : MonoBehaviour
             return;
         }
         currentPrefab = bubblePrefabs[0];
-        currentColor = Color.black;
+        currentColor = Color.white;
     }
 
     protected virtual void Update()
@@ -49,13 +49,16 @@ public class BubbleManager : MonoBehaviour
         }
     }
 
-    public void ShowNextBubble()
+    protected virtual void ShowNextBubble()
     {
-        Vector3 decalage = new Vector3(Random.Range(-xSpawnAmplitude, xSpawnAmplitude), Random.Range(-ySpawnAmplitude, ySpawnAmplitude));
-
-
+        Vector3 decalage = generateDecalage();
         GameObject bubbleObject = Instantiate(currentPrefab, bubbleParent.position + decalage, Quaternion.identity);
         //bubbleObject.transform.SetParent(bubbleParent.transform, true);
+        if (decalage.x < 0)
+        {
+            bubbleObject.GetComponent<SpriteRenderer>().flipX = false;
+        }
+        else bubbleObject.GetComponent<SpriteRenderer>().flipX = true;
 
         // Create a new Bubble object
         currentBubble = bubbleObject.GetComponent<Bubble>();
@@ -63,6 +66,17 @@ public class BubbleManager : MonoBehaviour
 
         // Add the new bubble to the list of active bubbles
         activeBubbles.Add(currentBubble);
+        storeBubbleValues(bubbleObject);
+    }
+
+    protected virtual void storeBubbleValues(GameObject bubbleObj)
+    {
+
+    }
+
+    protected virtual Vector3 generateDecalage()
+    {
+        return new Vector3(Random.Range(-xSpawnAmplitude, xSpawnAmplitude), Random.Range(-ySpawnAmplitude, ySpawnAmplitude));
     }
 
     // Optionally: Method to manually destroy a specific bubble
