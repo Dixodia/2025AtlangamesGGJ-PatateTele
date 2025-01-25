@@ -13,7 +13,7 @@ public class TVBubbleManager : ConstantChatBubbleManager
         if (Time.realtimeSinceStartup > nextBubbleTimer)
         {
             ShowNextBubble();
-            float scale = initScale * Mathf.Clamp( 1 + timeFactor / 10f, 1, maxScaleOverTime);
+            float scale = initScale * Mathf.Clamp( 1 + timeFactor / 3f, 1, maxScaleOverTime);
             currentBubble.transform.localScale = new Vector3(scale, scale, 1);
             currentBubble.launchBubble();
             nextBubbleTimer = generateNextTime();
@@ -26,5 +26,6 @@ public class TVBubbleManager : ConstantChatBubbleManager
     {
         base.storeBubbleValues(bubbleObj);
         initScale = bubbleObj.transform.localScale.x;
+        bubbleObj.GetComponent<SpriteRenderer>().flipX = false;
     }
 }

@@ -10,7 +10,7 @@ public class BubbleManager : MonoBehaviour
 
     protected Bubble currentBubble;
 
-    public float initialUpwardSpeed;
+    [SerializeField] public float initialUpwardSpeed;
 
     public float xSpawnAmplitude;
     public float ySpawnAmplitude;
@@ -32,10 +32,9 @@ public class BubbleManager : MonoBehaviour
             return;
         }
         currentPrefab = bubblePrefabs[0];
-        currentColor = Color.white;
     }
 
-    protected virtual void Update()
+    protected virtual void UpdateUpdate()
     {
         // Check if any condition is met to remove bubbles (this can be customized)
         for (int i = activeBubbles.Count - 1; i >= 0; i--)

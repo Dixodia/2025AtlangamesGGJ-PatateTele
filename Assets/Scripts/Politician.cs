@@ -9,7 +9,7 @@ public class Politician : OnClickBubbleManager
     public override void OnPointerDown(PointerEventData evData)
     {
         base.OnPointerDown(evData);
-        if (Color.red.r - currentColor.r < 0.3) spectator.updateInfluence(10);
+        if (Color.red == currentColor) spectator.updateInfluence(10);
     }
 
     protected override Vector3 generateDecalage()

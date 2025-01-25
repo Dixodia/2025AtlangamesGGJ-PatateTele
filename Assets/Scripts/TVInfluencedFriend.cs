@@ -7,13 +7,14 @@ public class TVInfluencedFriend : ConstantChatBubbleManager
 
     public float influencePercentage = 0;
     [SerializeField] float influenceDecreaseRate;
-
+    [SerializeField] float bubbleScale;
     protected override void Update()
     {
         if (Time.realtimeSinceStartup > nextBubbleTimer)
         {
             currentColor = choseColor();
             ShowNextBubble();
+            currentBubble.transform.localScale = new Vector3(bubbleScale, bubbleScale, 1);
             currentBubble.launchBubble();
             nextBubbleTimer = generateNextTime();
         }
@@ -32,5 +33,10 @@ public class TVInfluencedFriend : ConstantChatBubbleManager
         Debug.Log(influencePercentage);
 
         SceneManager.instance.mediasUpdateInfluenceValue(influencePercentage);
+    }
+
+    protected override Vector3 generateDecalage()
+    {
+        return new Vector3(Random.Range(-xSpawnAmplitude, 0.1f), Random.Range(-ySpawnAmplitude, ySpawnAmplitude));
     }
 }

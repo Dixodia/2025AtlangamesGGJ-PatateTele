@@ -24,9 +24,14 @@ public class TVFriend : OnClickBubbleManager
                 float endScale = currentBubble.launchBubble();
                 Debug.Log(endScale / initScale);
 
-                if(endScale / initScale > 15) InfluencedFriend.updateInfluence(influenceNb * (endScale / initScale));
+                if(endScale / initScale > minSizeThreshold) InfluencedFriend.updateInfluence(influenceNb * (endScale / initScale));
             }
         }
+    }
+
+    protected override Vector3 generateDecalage()
+    {
+        return new Vector3(Random.Range(0.1f, xSpawnAmplitude), Random.Range(-ySpawnAmplitude, ySpawnAmplitude));
     }
 
     protected override void storeBubbleValues(GameObject bubbleObj)

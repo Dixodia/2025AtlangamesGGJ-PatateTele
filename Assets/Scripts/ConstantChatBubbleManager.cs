@@ -8,8 +8,8 @@ public class ConstantChatBubbleManager : BubbleManager
     [SerializeField] protected Color initColor;
     protected override void Start()
     {
-        currentColor = initColor;
         base.Start();
+        currentColor = initColor;
         nextBubbleTimer = generateNextTime();
     }
 
