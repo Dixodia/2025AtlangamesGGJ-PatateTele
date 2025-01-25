@@ -29,13 +29,13 @@ public class BubbleManager : MonoBehaviour, IPointerDownHandler
 
     void Start()
     {
-        if (bubblePrefabs == null || transform.GetComponentInChildren<PickableColor>() == null || transform.GetComponentInChildren<PickableColor>().myColor == null || bubblePrefabs.Length == 0)
+        if (bubblePrefabs == null || bubblePrefabs.Length == 0)
         {
             Debug.LogError("Please assign all required references in the inspector.");
             return;
         }
         currentPrefab = bubblePrefabs[0];
-        currentColor = transform.GetComponentInChildren<PickableColor>().myColor;
+        currentColor = Color.black;
     }
 
     void Update()
@@ -50,13 +50,14 @@ public class BubbleManager : MonoBehaviour, IPointerDownHandler
                 activeBubbles.RemoveAt(i);
             }
         }
-
         if (currentBubble != null && !currentBubble.launched)
         {
-            if (Input.GetMouseButton(0) && transform.localScale.x < maxScale)
+            Debug.Log("testgrow");
+            if (Input.GetMouseButton(0) && currentBubble.transform.localScale.x < maxScale)
             {
-                float newScale = Mathf.Min(maxScale, transform.localScale.x + upscaleSpeed * Time.deltaTime);
-                transform.localScale = new Vector3(newScale, newScale, 1);
+                Debug.Log("growing");
+                float newScale = Mathf.Min(maxScale, currentBubble.transform.localScale.x + upscaleSpeed * Time.deltaTime);
+                currentBubble.transform.localScale = new Vector3(newScale, newScale, 1);
             }
             else
             {
@@ -68,6 +69,7 @@ public class BubbleManager : MonoBehaviour, IPointerDownHandler
     // Method to show a new bubble
     public void OnPointerDown(PointerEventData evData)
     {
+        Debug.Log("pop");
         ShowNextBubble();
     }
 
@@ -81,7 +83,7 @@ public class BubbleManager : MonoBehaviour, IPointerDownHandler
         bubbleObject.transform.SetParent(bubbleParent.transform, true);
 
         // Create a new Bubble object
-        Bubble currentBubble = bubbleObject.GetComponent<Bubble>();
+        currentBubble = bubbleObject.GetComponent<Bubble>();
         currentBubble.setBubble(bubbleObject, bubbleParent, currentColor, defaultBubbleDuration, initialUpwardSpeed + Random.Range(-ySpeedAmplitude, ySpeedAmplitude));
 
         // Add the new bubble to the list of active bubbles
