@@ -151,5 +151,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bubbleColor: {r: 0, g: 0, b: 0, a: 0}
   displayDuration: 0
-  initialUpwardSpeed: 5
   upwardDeceleration: 5
+  upscaleSpeed: 0.6
+  maxScale: 2

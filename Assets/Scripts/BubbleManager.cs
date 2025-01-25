@@ -1,11 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.WSA;
 
-public class BubbleManager : MonoBehaviour
+public class BubbleManager : MonoBehaviour, IPointerDownHandler
 {
     public GameObject[] bubblePrefabs;  // Prefab for creating bubbles
     public Transform bubbleParent;   // Parent for all bubbles (optional)
-    public Color[] bubbleColors;     // Array of possible bubble colors
+
+    private Bubble currentBubble;
 
     public float initialUpwardSpeed;
 
@@ -19,17 +22,20 @@ public class BubbleManager : MonoBehaviour
 
     public float defaultBubbleDuration = 5f; // Default duration the bubble stays on screen
 
+    public float upscaleSpeed;
+    public float maxScale;
+
     private List<Bubble> activeBubbles = new List<Bubble>();  // List to store active bubbles
 
     void Start()
     {
-        if (bubblePrefabs == null || bubbleColors.Length == 0 || bubblePrefabs.Length == 0)
+        if (bubblePrefabs == null || transform.GetComponentInChildren<PickableColor>() == null || transform.GetComponentInChildren<PickableColor>().myColor == null || bubblePrefabs.Length == 0)
         {
             Debug.LogError("Please assign all required references in the inspector.");
             return;
         }
         currentPrefab = bubblePrefabs[0];
-        currentColor = bubbleColors[0];
+        currentColor = transform.GetComponentInChildren<PickableColor>().myColor;
     }
 
     void Update()
@@ -45,28 +51,41 @@ public class BubbleManager : MonoBehaviour
             }
         }
 
-        // Example of adding a new bubble by clicking
-        if (Input.GetMouseButtonDown(0))  // Left mouse button click
+        if (currentBubble != null && !currentBubble.launched)
         {
-            ShowNextBubble();
+            if (Input.GetMouseButton(0) && transform.localScale.x < maxScale)
+            {
+                float newScale = Mathf.Min(maxScale, transform.localScale.x + upscaleSpeed * Time.deltaTime);
+                transform.localScale = new Vector3(newScale, newScale, 1);
+            }
+            else
+            {
+                currentBubble.launchBubble();
+            }
         }
     }
 
     // Method to show a new bubble
+    public void OnPointerDown(PointerEventData evData)
+    {
+        ShowNextBubble();
+    }
+
     public void ShowNextBubble()
     {
-
+        Debug.Log(currentColor.ToString());
         Vector3 decalage = new Vector3(Random.Range(-xSpawnAmplitude, xSpawnAmplitude), Random.Range(-ySpawnAmplitude, ySpawnAmplitude));
+
 
         GameObject bubbleObject = Instantiate(currentPrefab, bubbleParent.position + decalage, Quaternion.identity);
         bubbleObject.transform.SetParent(bubbleParent.transform, true);
 
         // Create a new Bubble object
-        Bubble newBubble = bubbleObject.GetComponent<Bubble>();
-        newBubble.setBubble(bubbleObject, bubbleParent, currentColor, defaultBubbleDuration, initialUpwardSpeed + Random.Range(-ySpeedAmplitude, ySpeedAmplitude));
+        Bubble currentBubble = bubbleObject.GetComponent<Bubble>();
+        currentBubble.setBubble(bubbleObject, bubbleParent, currentColor, defaultBubbleDuration, initialUpwardSpeed + Random.Range(-ySpeedAmplitude, ySpeedAmplitude));
 
         // Add the new bubble to the list of active bubbles
-        activeBubbles.Add(newBubble);
+        activeBubbles.Add(currentBubble);
     }
 
     // Optionally: Method to manually destroy a specific bubble
@@ -84,5 +103,11 @@ public class BubbleManager : MonoBehaviour
             bubble.DestroyBubble();
         }
         activeBubbles.Clear();
+    }
+
+    public void setColor(Color color)
+    {
+        currentColor = color;
+        Debug.Log("Color set to : " + currentColor.ToString());
     }
 }
