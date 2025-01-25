@@ -9,11 +9,18 @@ public class OnClickBubbleManager : BubbleManager, IPointerDownHandler
     protected override void Update()
     {
         base.Update();
+        //Debug.Log(currentBubble);
+        //Debug.Log(currentBubble.launched);
         if (currentBubble != null && !currentBubble.launched)
         {
-            if (Input.GetMouseButton(0) && currentBubble.transform.localScale.x < maxScale)
+            Debug.Log("aaaaaaaaaaaaaaaaa");
+            Debug.Log(Input.GetMouseButton(0));
+            Debug.Log(currentBubble.transform.localScale.x);
+            Debug.Log( maxScale);
+
+            if (Input.GetMouseButton(0) && currentBubble.transform.lossyScale.x < maxScale)
             {
-                float newScale = Mathf.Min(maxScale, currentBubble.transform.localScale.x + upscaleSpeed * Time.deltaTime);
+                float newScale = currentBubble.transform.localScale.x + upscaleSpeed * Time.deltaTime;
                 currentBubble.transform.localScale = new Vector3(newScale, newScale, 1);
             }
             else

@@ -42,7 +42,6 @@ public class ConstantChatBubbleManager : BubbleManager
     float generateNextTime()
     {
         float nextTime = Time.realtimeSinceStartup + minBubblePeriod + Random.Range(0, bubblePeriodAmplitude);
-        Debug.Log(nextTime);
         return nextTime;
     }
 

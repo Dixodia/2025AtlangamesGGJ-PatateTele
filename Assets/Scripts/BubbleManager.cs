@@ -26,13 +26,13 @@ public class BubbleManager : MonoBehaviour
 
     protected virtual void Start()
     {
-        if (bubblePrefabs == null || transform.GetComponentInChildren<PickableColor>() == null || transform.GetComponentInChildren<PickableColor>().myColor == null || bubblePrefabs.Length == 0)
+        if (bubblePrefabs == null || bubblePrefabs.Length == 0)
         {
             Debug.LogError("Please assign all required references in the inspector.");
             return;
         }
         currentPrefab = bubblePrefabs[0];
-        currentColor = transform.GetComponentInChildren<PickableColor>().myColor;
+        currentColor = Color.black;
     }
 
     protected virtual void Update()
@@ -51,12 +51,11 @@ public class BubbleManager : MonoBehaviour
 
     public void ShowNextBubble()
     {
-        Debug.Log(currentColor.ToString());
         Vector3 decalage = new Vector3(Random.Range(-xSpawnAmplitude, xSpawnAmplitude), Random.Range(-ySpawnAmplitude, ySpawnAmplitude));
 
 
         GameObject bubbleObject = Instantiate(currentPrefab, bubbleParent.position + decalage, Quaternion.identity);
-        bubbleObject.transform.SetParent(bubbleParent.transform, true);
+        //bubbleObject.transform.SetParent(bubbleParent.transform, true);
 
         // Create a new Bubble object
         currentBubble = bubbleObject.GetComponent<Bubble>();
