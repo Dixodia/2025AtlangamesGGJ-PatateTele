@@ -14,6 +14,7 @@ public class SpectatorManager : ConstantChatBubbleManager
     {
         source = GetComponent<AudioSource>();
     }
+
     protected override void Update()
     {
         if (Time.realtimeSinceStartup > nextBubbleTimer)
@@ -30,7 +31,8 @@ public class SpectatorManager : ConstantChatBubbleManager
             ShowNextBubble();
             currentBubble.launchBubble(true);
             nextBubbleTimer = generateNextTime();
-            SceneManager.instance.politicianUpdateConsecutive(currentColor == influencedColor);
+            Debug.Log(SceneTransitionManager.instance);
+            SceneTransitionManager.instance.politicianUpdateConsecutive(currentColor == influencedColor);
         }
         influencePercentage = Mathf.Max(0, influencePercentage - influenceDecreaseRate * Time.deltaTime);
     }

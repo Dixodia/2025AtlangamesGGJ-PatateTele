@@ -26,14 +26,14 @@ public class OnClickBubbleManager : BubbleManager, IPointerDownHandler
                 if (!isInflating)
                 {
                     isInflating = true;
-                    currentAudio = AudioManager.instance.PlaySoundFromInt(2);
+                    //currentAudio = AudioManager.instance.PlaySoundFromInt(2);
                 }
             }
             else
             {
-                currentAudio.Stop();
+                //currentAudio.Stop();
                 currentBubble.launchBubble(true);
-                isInflating=false;
+                //isInflating=false;
             }
         }
     }

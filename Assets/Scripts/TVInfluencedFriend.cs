@@ -32,7 +32,7 @@ public class TVInfluencedFriend : ConstantChatBubbleManager
         influencePercentage = Mathf.Clamp(quantity + influencePercentage, 0, 100);
         Debug.Log(influencePercentage);
 
-        SceneManager.instance.mediasUpdateInfluenceValue(influencePercentage);
+        SceneTransitionManager.instance.mediasUpdateInfluenceValue(influencePercentage);
     }
 
     protected override Vector3 generateDecalage()

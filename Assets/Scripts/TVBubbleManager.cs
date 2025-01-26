@@ -28,7 +28,7 @@ public class TVBubbleManager : ConstantChatBubbleManager
             currentBubble.launchBubble(true);
             nextBubbleTimer = generateNextTime();
             InfluencedFriend.updateInfluence(influenceNb + timeFactor * 1.5f);
-            screenShake.ShakeCamera(timeFactor /10 * 0.1f + 0.05f, timeFactor * 0.05f, 0.05f);
+            screenShake.ShakeCamera(timeFactor /10 * 0.01f + 0.01f, timeFactor * 0.01f, 0.05f);
         }
         timeFactor += Time.deltaTime / 3;
     }
