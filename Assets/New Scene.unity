@@ -2102,7 +2102,7 @@ MonoBehaviour:
   - {fileID: 1823513480}
   - {fileID: 719991809}
   - {fileID: 422101411}
-  sceneNb: 4
+  sceneNb: 1
   consecutiveMsgGoal: 5
   disputeGuy: {fileID: 1051456446}
   disputeFriend: {fileID: 454942464}

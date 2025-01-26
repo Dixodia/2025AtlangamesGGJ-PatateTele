@@ -120,6 +120,7 @@ public class SceneManager : MonoBehaviour
     void enableGoNext()
     {
         canGoNext = true;
+        Debug.Log("can go next");
     }
 
     void allowEndGame()
@@ -130,6 +131,7 @@ public class SceneManager : MonoBehaviour
     // Start the coroutine to call FunctionToCall after a specified delay
     public void CallFunctionAfterDelay(float delay, Action func)
     {
+        Debug.Log("call after delay");
         StartCoroutine(CallAfterDelayCoroutine(delay, func));
     }
 
