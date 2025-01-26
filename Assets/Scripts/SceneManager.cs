@@ -166,7 +166,7 @@ public class SceneManager : MonoBehaviour
     {
         lastWord.ShowNextBubble();
         lastWord.currentBubble.launchBubble(true);
-        float newScale = 3;
+        float newScale = 0.15f;
         lastWord.currentBubble.transform.localScale = new Vector3(newScale, newScale, 0);
     }
 }

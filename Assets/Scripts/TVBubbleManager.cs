@@ -12,6 +12,12 @@ public class TVBubbleManager : ConstantChatBubbleManager
 
     [SerializeField] ScreenShake screenShake;
 
+    AudioSource source;
+
+    private void Awake()
+    {
+        source = GetComponent<AudioSource>();
+    }
     protected override void Update()
     {
         if (Time.realtimeSinceStartup > nextBubbleTimer)
@@ -32,5 +38,15 @@ public class TVBubbleManager : ConstantChatBubbleManager
         base.storeBubbleValues(bubbleObj);
         initScale = bubbleObj.transform.localScale.x;
         bubbleObj.GetComponent<SpriteRenderer>().flipX = false;
+    }
+
+    private void OnEnable()
+    {
+        source.Play();
+    }
+
+    private void OnDisable()
+    {
+        if(source!= null) source.Stop();
     }
 }

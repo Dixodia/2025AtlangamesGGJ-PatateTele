@@ -36,32 +36,35 @@ public class AudioManager : MonoBehaviour
 
 
 
-    public void PlaySoundFromInt(int clipNb)
+    public AudioSource PlaySoundFromInt(int clipNb)
     {
         if (audioClips.Count > clipNb)
         {
-            PlaySound(audioClips[clipNb]);
+            return PlaySound(audioClips[clipNb]);
         }
         else
         {
             Debug.LogWarning("Sound not found in dictionary");
         }
+        return null;
     }
 
     // Play a sound by directly passing the AudioClip
-    public void PlaySound(AudioClip clip)
+    public AudioSource PlaySound(AudioClip clip)
     {
         AudioSource source = GetAvailableAudioSource();
         Debug.Log("sound played");
         if (source != null)
         {
             source.clip = clip;
+            source.volume = 1.0f;
             source.Play();
         }
         else
         {
             Debug.LogWarning("No available audio sources!");
         }
+        return source;
     }
 
     // Stop all sounds
