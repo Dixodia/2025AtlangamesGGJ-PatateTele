@@ -119,6 +119,39 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &220175597
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 220175598}
+  m_Layer: 0
+  m_Name: Scene3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &220175598
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220175597}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.509133, y: 5.3491488, z: 3.3812406}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1491536056}
+  - {fileID: 733412763}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &378006036
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,7 +458,7 @@ GameObject:
   - component: {fileID: 733412761}
   - component: {fileID: 733412760}
   - component: {fileID: 733412759}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DisputeFriend
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -446,6 +479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 1
   bubblePrefabs:
+  - {fileID: 7421543492096160144, guid: c117fe508078b4f4f9553fc962c471b9, type: 3}
   - {fileID: 7421543492096160144, guid: c117fe508078b4f4f9553fc962c471b9, type: 3}
   bubbleParent: {fileID: 1068532602}
   initialUpwardSpeed: 1
@@ -549,13 +583,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 733412758}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.77, y: 5.17, z: 3.3812406}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.739133, y: -0.17914867, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1068532602}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 220175598}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &738666478
 GameObject:
@@ -751,7 +785,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1068532602}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BubbleParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -833,6 +867,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceeeac51d1e06ac408b314a6a5d73d85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scenePackages: []
   sceneNb: 2
   consecutiveMsgGoal: 5
   disputeGuy: {fileID: 1491536055}
@@ -937,13 +972,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1491536054}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.57, y: 4.9, z: 3.3812406}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.0608673, y: -0.44914865, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1331116035}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 220175598}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &1491536057
 CapsuleCollider:
@@ -1177,6 +1212,7 @@ GameObject:
   - component: {fileID: 2087395842}
   - component: {fileID: 2087395841}
   - component: {fileID: 2087395840}
+  - component: {fileID: 2087395843}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1245,6 +1281,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2087395843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2087395839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52a4f2a961c37144b9d354526411d64b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultCursor: {fileID: 2800000, guid: 44447e873dde3eb4fb841e1925e79450, type: 3}
+  hoverCursor: {fileID: 2800000, guid: 3027ac864636ae04997e59f7f628935c, type: 3}
+  clickableLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  cam: {fileID: 738666481}
 --- !u!1 &2129477254
 GameObject:
   m_ObjectHideFlags: 0
@@ -1397,5 +1451,4 @@ SceneRoots:
   - {fileID: 378006041}
   - {fileID: 2129477259}
   - {fileID: 2041095208}
-  - {fileID: 1491536056}
-  - {fileID: 733412763}
+  - {fileID: 220175598}

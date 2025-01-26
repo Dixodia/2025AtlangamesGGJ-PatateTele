@@ -17,12 +17,18 @@ public class SceneManager : MonoBehaviour
     //Scene3
     [SerializeField] DisputeInfluenced disputeGuy;
     [SerializeField] DisputeFriend disputeFriend;
-    bool convIsStopped = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
         instance = this;
+        for (int i = 1; i < scenePackages.Length; i++)
+        {
+            foreach (BubbleManager manager in scenePackages[sceneNb].GetComponentsInChildren<BubbleManager>())
+            {
+                manager.enabled = false;
+            }
+        }
     }
 
     // Update is called once per frame
