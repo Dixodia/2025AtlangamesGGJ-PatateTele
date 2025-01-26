@@ -473,13 +473,14 @@ MonoBehaviour:
   bubblePrefabs:
   - {fileID: 7421543492096160144, guid: c117fe508078b4f4f9553fc962c471b9, type: 3}
   bubbleParent: {fileID: 1653732093}
+  currentBubble: {fileID: 0}
   initialUpwardSpeed: 0.5
   xSpawnAmplitude: 0.1
   ySpawnAmplitude: 0
   ySpeedAmplitude: 0.05
   currentPrefab: {fileID: 0}
   currentColor: {r: 1, g: 1, b: 1, a: 1}
-  defaultBubbleDuration: 3
+  defaultBubbleDuration: 1.5
   activeBubbles: []
   minBubblePeriod: 1.5
   bubblePeriodAmplitude: 1
@@ -681,10 +682,11 @@ MonoBehaviour:
   - {fileID: 7421543492096160144, guid: c117fe508078b4f4f9553fc962c471b9, type: 3}
   - {fileID: 7421543492096160144, guid: c117fe508078b4f4f9553fc962c471b9, type: 3}
   bubbleParent: {fileID: 749914773}
+  currentBubble: {fileID: 0}
   initialUpwardSpeed: 1
   xSpawnAmplitude: 1
   ySpawnAmplitude: 2
-  ySpeedAmplitude: 4
+  ySpeedAmplitude: 3
   currentPrefab: {fileID: 0}
   currentColor: {r: 1, g: 1, b: 1, a: 1}
   defaultBubbleDuration: 1
@@ -699,7 +701,9 @@ MonoBehaviour:
   intensityStopThreshold: 60
   initScaleFactor: 3
   convIsStopped: 0
+  convCanUnPop: 0
   conversationIntensity: 0
+  intenseColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!65 &454942465
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1177,13 +1181,14 @@ MonoBehaviour:
   bubblePrefabs:
   - {fileID: 7421543492096160144, guid: c117fe508078b4f4f9553fc962c471b9, type: 3}
   bubbleParent: {fileID: 1741123285}
+  currentBubble: {fileID: 0}
   initialUpwardSpeed: 3.5
   xSpawnAmplitude: 0.5
   ySpawnAmplitude: 0.2
   ySpeedAmplitude: 0.5
   currentPrefab: {fileID: 3674167904402835232, guid: 2f7e41d2ccad96c4db371ea919c11b96, type: 3}
   currentColor: {r: 1, g: 1, b: 1, a: 1}
-  defaultBubbleDuration: 3.5
+  defaultBubbleDuration: 0.75
   activeBubbles: []
   upscaleSpeed: 0.3
   maxScale: 1
@@ -1385,10 +1390,11 @@ MonoBehaviour:
   bubblePrefabs:
   - {fileID: 7421543492096160144, guid: c117fe508078b4f4f9553fc962c471b9, type: 3}
   bubbleParent: {fileID: 1445940780}
+  currentBubble: {fileID: 0}
   initialUpwardSpeed: 1
   xSpawnAmplitude: 0.5
   ySpawnAmplitude: 1
-  ySpeedAmplitude: 2
+  ySpeedAmplitude: 3
   currentPrefab: {fileID: 0}
   currentColor: {r: 1, g: 0, b: 0, a: 1}
   defaultBubbleDuration: 1
@@ -1539,13 +1545,14 @@ MonoBehaviour:
   bubblePrefabs:
   - {fileID: 7421543492096160144, guid: c117fe508078b4f4f9553fc962c471b9, type: 3}
   bubbleParent: {fileID: 163172848}
+  currentBubble: {fileID: 0}
   initialUpwardSpeed: 0
   xSpawnAmplitude: 0
   ySpawnAmplitude: 0
   ySpeedAmplitude: 0
   currentPrefab: {fileID: 0}
   currentColor: {r: 1, g: 0, b: 0, a: 1}
-  defaultBubbleDuration: 3
+  defaultBubbleDuration: 2
   activeBubbles: []
   minBubblePeriod: 4
   bubblePeriodAmplitude: 0
@@ -1554,6 +1561,7 @@ MonoBehaviour:
   influenceNb: 5
   InfluencedFriend: {fileID: 251198410}
   maxScaleOverTime: 10
+  screenShake: {fileID: 1425483383}
 --- !u!65 &1087790510
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1677,13 +1685,14 @@ MonoBehaviour:
   bubblePrefabs:
   - {fileID: 7421543492096160144, guid: c117fe508078b4f4f9553fc962c471b9, type: 3}
   bubbleParent: {fileID: 426280041}
+  currentBubble: {fileID: 0}
   initialUpwardSpeed: 2
-  xSpawnAmplitude: 1
-  ySpawnAmplitude: 0
-  ySpeedAmplitude: 0
+  xSpawnAmplitude: 2
+  ySpawnAmplitude: 0.5
+  ySpeedAmplitude: 0.5
   currentPrefab: {fileID: 909094894255624710, guid: f801005a2ed89fb4e8549ba87defd2cd, type: 3}
   currentColor: {r: 0, g: 0, b: 0, a: 0}
-  defaultBubbleDuration: 5
+  defaultBubbleDuration: 1.5
   activeBubbles: []
   minBubblePeriod: 1.5
   bubblePeriodAmplitude: 0.5
@@ -1859,6 +1868,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1425483381}
   - component: {fileID: 1425483382}
+  - component: {fileID: 1425483383}
   m_Layer: 0
   m_Name: Scene2
   m_TagString: Untagged
@@ -1924,6 +1934,21 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
+--- !u!114 &1425483383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425483380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d60d2ad2fbe4c246afbb11ad9a989df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeDuration: 0
+  shakeMagnitude: 0.1
+  shakeFrequency: 2
 --- !u!1 &1445940779
 GameObject:
   m_ObjectHideFlags: 0
@@ -2079,6 +2104,7 @@ GameObject:
   - component: {fileID: 1653419962}
   - component: {fileID: 1653419965}
   - component: {fileID: 1653419964}
+  - component: {fileID: 1653419966}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -2105,9 +2131,10 @@ MonoBehaviour:
   - {fileID: 719991809}
   - {fileID: 422101411}
   sceneNb: 3
-  consecutiveMsgGoal: 5
+  consecutiveMsgGoal: 10
   disputeGuy: {fileID: 1051456446}
   disputeFriend: {fileID: 454942464}
+  lastWord: {fileID: 0}
 --- !u!4 &1653419963
 Transform:
   m_ObjectHideFlags: 0
@@ -2151,6 +2178,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxAudioSources: 10
   audioSources: []
+  audioClips:
+  - {fileID: 8300000, guid: ccc680617471e174b909480cad78ee9e, type: 3}
+--- !u!114 &1653419966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1653419961}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52a4f2a961c37144b9d354526411d64b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultCursor: {fileID: 2800000, guid: 5d51c4c5f7ca518488e152879df81c20, type: 3}
+  hoverCursor: {fileID: 2800000, guid: 154188298915c0c418f5e8ca6363b89e, type: 3}
+  clickableLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  cam: {fileID: 618682687}
 --- !u!1 &1653732092
 GameObject:
   m_ObjectHideFlags: 0
@@ -2357,6 +2404,7 @@ MonoBehaviour:
   bubblePrefabs:
   - {fileID: 7421543492096160144, guid: c117fe508078b4f4f9553fc962c471b9, type: 3}
   bubbleParent: {fileID: 1804596373}
+  currentBubble: {fileID: 0}
   initialUpwardSpeed: 1
   xSpawnAmplitude: 0
   ySpawnAmplitude: 0.2

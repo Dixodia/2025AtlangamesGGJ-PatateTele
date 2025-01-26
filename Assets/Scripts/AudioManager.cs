@@ -9,10 +9,12 @@ public class AudioManager : MonoBehaviour
     public int maxAudioSources = 10;
 
     // List to hold available audio sources
-    [SerializeField] private List<AudioSource> audioSources;
+    [SerializeField] public List<AudioSource> audioSources;
 
     // A dictionary to hold the audio clips by name for easy access
-    [SerializeField] public Dictionary<string, AudioClip> audioClips;
+    [SerializeField] public List<AudioClip> audioClips;
+
+    //0 bubble pop
 
     private void Awake()
     {
@@ -22,7 +24,6 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         audioSources = new List<AudioSource>();
-        audioClips = new Dictionary<string, AudioClip>();
 
         // Preallocate a pool of audio sources to handle multiple sounds
         for (int i = 0; i < maxAudioSources; i++)
@@ -33,29 +34,17 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    // Load an audio clip into the dictionary for later use (assign this in the inspector or dynamically)
-    public void LoadAudioClip(string clipName, AudioClip clip)
-    {
-        if (!audioClips.ContainsKey(clipName))
-        {
-            audioClips.Add(clipName, clip);
-        }
-        else
-        {
-            Debug.LogWarning("Audio clip with name " + clipName + " already exists!");
-        }
-    }
 
-    // Play a sound by its name (e.g., from the dictionary)
-    public void PlaySound(string clipName)
+
+    public void PlaySoundFromInt(int clipNb)
     {
-        if (audioClips.ContainsKey(clipName))
+        if (audioClips.Count > clipNb)
         {
-            PlaySound(audioClips[clipName]);
+            PlaySound(audioClips[clipNb]);
         }
         else
         {
-            Debug.LogWarning("Sound not found in dictionary: " + clipName);
+            Debug.LogWarning("Sound not found in dictionary");
         }
     }
 
@@ -63,7 +52,7 @@ public class AudioManager : MonoBehaviour
     public void PlaySound(AudioClip clip)
     {
         AudioSource source = GetAvailableAudioSource();
-
+        Debug.Log("sound played");
         if (source != null)
         {
             source.clip = clip;

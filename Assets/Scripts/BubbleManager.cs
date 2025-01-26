@@ -10,7 +10,7 @@ public class BubbleManager : MonoBehaviour
     public GameObject[] bubblePrefabs;  // Prefab for creating bubbles
     public Transform bubbleParent;   // Parent for all bubbles (optional)
 
-    protected Bubble currentBubble;
+    public Bubble currentBubble;
 
     [SerializeField] public float initialUpwardSpeed;
 
@@ -22,7 +22,7 @@ public class BubbleManager : MonoBehaviour
     [SerializeField] protected GameObject currentPrefab;  // Prefab for creating bubbles
     [SerializeField] protected Color currentColor;  // Prefab for creating bubbles
 
-    public float defaultBubbleDuration = 5f; // Default duration the bubble stays on screen
+    [SerializeField] public float defaultBubbleDuration = 2f; // Default duration the bubble stays on screen
 
     public List<Bubble> activeBubbles = new List<Bubble>();  // List to store active bubbles
 
@@ -53,7 +53,7 @@ public class BubbleManager : MonoBehaviour
         }          
     }
 
-    protected virtual void ShowNextBubble()
+    public virtual void ShowNextBubble()
     {
         Vector3 decalage = generateDecalage();
         GameObject bubbleObject = Instantiate(currentPrefab, bubbleParent.position + decalage, Quaternion.identity);

@@ -34,4 +34,10 @@ public class SpectatorManager : ConstantChatBubbleManager
         Debug.Log("influence updated");
         influencePercentage = Mathf.Clamp(quantity + influencePercentage, 0, 100);
     }
+
+    protected override float generateNextTime()
+    {
+        float nextTime = Time.realtimeSinceStartup + minBubblePeriod * (1-influencePercentage / 100f * 0.95f) ;
+        return nextTime;
+    }
 }

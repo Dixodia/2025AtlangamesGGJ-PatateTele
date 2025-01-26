@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -19,6 +21,7 @@ public class DisputeFriend : BubbleManager, IPointerDownHandler
     bool converIsCalm = true;
     bool convIsFire = false;
     public bool convIsStopped = false;
+    public bool convCanUnPop = false;
 
     public float conversationIntensity = 0;
 
@@ -58,9 +61,9 @@ public class DisputeFriend : BubbleManager, IPointerDownHandler
             ShowNextBubble();
             float newScale = initScaleFactor * currentBubble.transform.localScale.x * (1 + conversationIntensity / 40);
             currentBubble.transform.localScale = new Vector3(newScale, newScale, 1);
-            currentBubble.transform.rotation = Quaternion.Euler(0.5f * new Vector3(0, 0, Random.Range(-conversationIntensity, conversationIntensity)));
+            currentBubble.transform.rotation = Quaternion.Euler(0.5f * new Vector3(0, 0, 3 * UnityEngine.Random.Range(-conversationIntensity, conversationIntensity)));
             currentBubble.launchBubble(intensityCantEraseThreshold > conversationIntensity);
-            disputeGuy.answer(conversationIntensity, intensityCantEraseThreshold > conversationIntensity);
+            CallFunctionAfterDelay(0.3f, disputeGuy.answer, conversationIntensity, intensityCantEraseThreshold > conversationIntensity);
         }
     }
 
@@ -68,6 +71,12 @@ public class DisputeFriend : BubbleManager, IPointerDownHandler
     {
         if(!convIsFire) launchBubbleWithSize(conversationIntensity);
     }
+
+    public virtual void OnPointerClick(PointerEventData evData)
+    {
+
+    }
+
 
     protected float generateNextTime()
     {
@@ -78,7 +87,35 @@ public class DisputeFriend : BubbleManager, IPointerDownHandler
     private void stopConv()
     {
         convIsStopped = true;
-        foreach(Bubble bubble in activeBubbles)
+        
+
+        CallFunctionAfterDelay(4f, enablePop, 0f, true);
+    }
+
+    protected override Vector3 generateDecalage()
+    {
+        return new Vector3(UnityEngine.Random.Range(0 ,xSpawnAmplitude), UnityEngine.Random.Range(0, ySpawnAmplitude), 0);
+    }
+
+    public void CallFunctionAfterDelay(float delay, Action<float, bool> func, float fl, bool bl)
+    {
+        Debug.Log("call after delay");
+        StartCoroutine(CallAfterDelayCoroutine(delay, func, fl, bl));
+    }
+
+    // Coroutine to wait for 'delay' seconds and then call the target function
+    private IEnumerator CallAfterDelayCoroutine(float delay, Action<float, bool> func, float fl, bool bl)
+    {
+        // Wait for the specified number of seconds
+        yield return new WaitForSeconds(delay);
+
+        // Call the function after the delay
+        func?.Invoke(fl, bl);
+    }
+
+    private void enablePop(float f, bool b)
+    {
+        foreach (Bubble bubble in activeBubbles)
         {
             bubble.AddComponent<ClickToDestroy>();
             bubble.AddComponent<BoxCollider>();
@@ -89,10 +126,7 @@ public class DisputeFriend : BubbleManager, IPointerDownHandler
             bubble.AddComponent<ClickToDestroy>();
             bubble.AddComponent<BoxCollider>();
         }
-    }
 
-    protected override Vector3 generateDecalage()
-    {
-        return new Vector3(Random.Range(-xSpawnAmplitude, 0), Random.Range(0, ySpawnAmplitude), 0);
+        //change cursor
     }
 }

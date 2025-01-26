@@ -21,7 +21,7 @@ public class SceneManager : MonoBehaviour
     //Scene3
     [SerializeField] DisputeInfluenced disputeGuy;
     [SerializeField] DisputeFriend disputeFriend;
-
+    [SerializeField] SimpleBubbleManager lastWord;
     bool canGoNext = false;
     bool canEndGame = false;
 
@@ -61,11 +61,28 @@ public class SceneManager : MonoBehaviour
         switch (sceneNb)
         {
             case 0:
-                if (consecutiveRedMessages > consecutiveMsgGoal) goToNextScene(); break;
+                if (consecutiveRedMessages > consecutiveMsgGoal && !canGoNext) 
+                {
+                    CallFunctionAfterDelay(3, goToNextScene); 
+                    canGoNext = true;
+                }
+                break;
+
             case 1:
-                if (TVInfluence > 90) goToNextScene(); break;
+                if (TVInfluence > 90 && !canGoNext) 
+                {
+                    CallFunctionAfterDelay(3, goToNextScene);
+                    canGoNext = true;
+                }
+                break;
             case 2:
-                if (disputeFriend.convIsStopped && disputeFriend.activeBubbles.Count == 0 && disputeGuy.activeBubbles.Count == 0) goToNextScene(); break;
+                if (disputeFriend.convIsStopped && disputeFriend.activeBubbles.Count == 0 && disputeGuy.activeBubbles.Count == 0 && !canGoNext)
+                {
+                    CallFunctionAfterDelay(2, spawnGreenBubble);
+                    CallFunctionAfterDelay(5, goToNextScene);
+                    canGoNext = true;
+                }
+                break;
             case 3:
                 if(canGoNext) goToNextScene(); break;
             default:
@@ -143,5 +160,13 @@ public class SceneManager : MonoBehaviour
 
         // Call the function after the delay
         func?.Invoke();
+    }
+
+    private void spawnGreenBubble()
+    {
+        lastWord.ShowNextBubble();
+        lastWord.currentBubble.launchBubble(true);
+        float newScale = 3;
+        lastWord.currentBubble.transform.localScale = new Vector3(newScale, newScale, 0);
     }
 }

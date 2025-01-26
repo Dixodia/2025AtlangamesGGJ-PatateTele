@@ -9,6 +9,7 @@ public class DisputeInfluenced : BubbleManager
     {
         ShowNextBubble();
         currentBubble.transform.localScale = initScaleFactor * currentBubble.transform.localScale * (1+disputeNb/100f* maxSizeRatio);
+        currentBubble.transform.rotation = Quaternion.Euler(0.5f * new Vector3(0, 0, 3 * Random.Range(-disputeNb, disputeNb)));
         currentBubble.launchBubble(isDestructible);
     }
 

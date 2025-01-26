@@ -37,6 +37,6 @@ public class TVInfluencedFriend : ConstantChatBubbleManager
 
     protected override Vector3 generateDecalage()
     {
-        return new Vector3(Random.Range(-xSpawnAmplitude, 0.1f), Random.Range(-ySpawnAmplitude, ySpawnAmplitude));
+        return new Vector3(Random.Range(-xSpawnAmplitude, 0), Random.Range(-ySpawnAmplitude, ySpawnAmplitude));
     }
 }

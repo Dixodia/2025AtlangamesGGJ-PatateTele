@@ -44,6 +44,7 @@ public class Bubble : MonoBehaviour
         // Set the initial upward velocity
         rb.linearVelocity = transform.up * initUpSpeed;
         if(timeLimit) Destroy(gameObject, displayDuration);  // Destroy after a set duration (or adjust for your needs)
+        AudioManager.instance.PlaySoundFromInt(0);
         return transform.localScale.x;
     }
 

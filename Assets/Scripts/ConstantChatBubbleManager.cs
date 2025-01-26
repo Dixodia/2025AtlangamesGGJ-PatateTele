@@ -23,7 +23,7 @@ public class ConstantChatBubbleManager : BubbleManager
         }
     }
 
-    protected float generateNextTime()
+    protected virtual float generateNextTime()
     {
         float nextTime = Time.realtimeSinceStartup + minBubblePeriod + Random.Range(0, bubblePeriodAmplitude);
         return nextTime;

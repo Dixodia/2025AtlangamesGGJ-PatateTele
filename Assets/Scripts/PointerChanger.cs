@@ -27,13 +27,11 @@ public class PointerChanger : MonoBehaviour
         {
             // If we hit a clickable object, change the cursor
             Cursor.SetCursor(hoverCursor, Vector2.zero, CursorMode.Auto);
-            Debug.Log("clickable");
         }
         else
         {
             // If no object is under the mouse, reset to the default cursor
             Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
-            Debug.Log("unclickable");
         }
     }
 }
