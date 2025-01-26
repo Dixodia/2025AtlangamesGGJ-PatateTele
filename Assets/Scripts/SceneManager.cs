@@ -104,8 +104,8 @@ public class SceneManager : MonoBehaviour
             manager.enabled = true;
         }
 
-        if (sceneNb == 4) CallFunctionAfterDelay(3, enableGoNext);
-        if (sceneNb == 5)
+        if (sceneNb == 3) CallFunctionAfterDelay(3, enableGoNext);
+        if (sceneNb == 4)
         {
             CallFunctionAfterDelay(3, allowEndGame);
         }

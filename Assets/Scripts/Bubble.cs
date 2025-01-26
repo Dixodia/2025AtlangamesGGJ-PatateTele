@@ -13,6 +13,9 @@ public class Bubble : MonoBehaviour
 
     private float initUpSpeed;
     // Constructor for creating a bubble
+
+    public GameObject popParticlePrefab;
+
     public void setBubble(GameObject bubblePrefab, Transform parentTransform, Color color, float duration, float initialUpwardSpeed)
     {
         GetComponent<SpriteRenderer>().color = color;

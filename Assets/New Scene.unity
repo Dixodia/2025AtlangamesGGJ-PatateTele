@@ -2077,6 +2077,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1653419963}
   - component: {fileID: 1653419962}
+  - component: {fileID: 1653419965}
+  - component: {fileID: 1653419964}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -2102,7 +2104,7 @@ MonoBehaviour:
   - {fileID: 1823513480}
   - {fileID: 719991809}
   - {fileID: 422101411}
-  sceneNb: 1
+  sceneNb: 3
   consecutiveMsgGoal: 5
   disputeGuy: {fileID: 1051456446}
   disputeFriend: {fileID: 454942464}
@@ -2121,6 +2123,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1653419964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1653419961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fed45835dc1c23c4697ba1a5619e6f36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleList:
+  - {fileID: 271185230653056315, guid: 6e96ec94973ef05409c5028390121103, type: 3}
+--- !u!114 &1653419965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1653419961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c86286a2ea0842f408fbd95fc35173e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAudioSources: 10
+  audioSources: []
 --- !u!1 &1653732092
 GameObject:
   m_ObjectHideFlags: 0
