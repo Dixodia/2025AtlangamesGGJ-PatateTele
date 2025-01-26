@@ -22,7 +22,7 @@ public class SpectatorManager : ConstantChatBubbleManager
                 currentColor = baseColor;
             }
             ShowNextBubble();
-            currentBubble.launchBubble();
+            currentBubble.launchBubble(true);
             nextBubbleTimer = generateNextTime();
             SceneManager.instance.politicianUpdateConsecutive(currentColor == influencedColor);
         }

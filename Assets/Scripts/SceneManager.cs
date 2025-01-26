@@ -3,7 +3,8 @@ using UnityEngine;
 public class SceneManager : MonoBehaviour
 {
     public static SceneManager instance;
-    
+    [SerializeField] GameObject[] scenePackages;
+
     [SerializeField] int sceneNb = 0;
 
     //Scene 1
@@ -12,6 +13,11 @@ public class SceneManager : MonoBehaviour
 
     //Scene 2
     float TVInfluence = 0;
+
+    //Scene3
+    [SerializeField] DisputeInfluenced disputeGuy;
+    [SerializeField] DisputeFriend disputeFriend;
+    bool convIsStopped = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
@@ -33,7 +39,8 @@ public class SceneManager : MonoBehaviour
                 if (consecutiveRedMessages > consecutiveMsgGoal) goToNextScene(); break;
             case 1:
                 if (TVInfluence > 90) goToNextScene(); break;
-
+            case 2:
+                if (disputeFriend.convIsStopped && disputeFriend.activeBubbles.Count == 0 && disputeGuy.activeBubbles.Count == 0) goToNextScene(); break;
             default:
                 break;
         }
@@ -54,6 +61,17 @@ public class SceneManager : MonoBehaviour
     private void goToNextScene()
     {
         CameraManager.instance.nextCam();
+
+        foreach (BubbleManager manager in scenePackages[sceneNb].GetComponentsInChildren<BubbleManager>())
+        {
+            manager.isActive = false;
+        }
+
+
         sceneNb++;
-    }
+        foreach (BubbleManager manager in scenePackages[sceneNb].GetComponentsInChildren<BubbleManager>())
+        {
+            manager.isActive = true;
+        }
+    } 
 }

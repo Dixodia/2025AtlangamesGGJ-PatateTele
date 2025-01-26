@@ -21,7 +21,7 @@ public class TVFriend : OnClickBubbleManager
             }
             else
             {
-                float endScale = currentBubble.launchBubble();
+                float endScale = currentBubble.launchBubble(true);
                 Debug.Log(endScale / initScale);
 
                 if(endScale / initScale > minSizeThreshold) InfluencedFriend.updateInfluence(influenceNb * (endScale / initScale));

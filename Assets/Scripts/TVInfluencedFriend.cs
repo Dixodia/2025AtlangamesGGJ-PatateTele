@@ -15,7 +15,7 @@ public class TVInfluencedFriend : ConstantChatBubbleManager
             currentColor = choseColor();
             ShowNextBubble();
             currentBubble.transform.localScale = new Vector3(bubbleScale, bubbleScale, 1);
-            currentBubble.launchBubble();
+            currentBubble.launchBubble(true);
             nextBubbleTimer = generateNextTime();
         }
         influencePercentage = Mathf.Max(0, influencePercentage - influenceDecreaseRate * Time.deltaTime);

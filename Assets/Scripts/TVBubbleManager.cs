@@ -15,7 +15,7 @@ public class TVBubbleManager : ConstantChatBubbleManager
             ShowNextBubble();
             float scale = initScale * Mathf.Clamp( 1 + timeFactor / 3f, 1, maxScaleOverTime);
             currentBubble.transform.localScale = new Vector3(scale, scale, 1);
-            currentBubble.launchBubble();
+            currentBubble.launchBubble(true);
             nextBubbleTimer = generateNextTime();
             InfluencedFriend.updateInfluence(influenceNb + timeFactor);
         }

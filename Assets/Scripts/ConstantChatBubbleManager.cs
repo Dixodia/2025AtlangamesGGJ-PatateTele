@@ -18,7 +18,7 @@ public class ConstantChatBubbleManager : BubbleManager
         if (Time.realtimeSinceStartup > nextBubbleTimer)
         {
             ShowNextBubble();
-            currentBubble.launchBubble();
+            currentBubble.launchBubble(true);
             nextBubbleTimer = generateNextTime();
         }
     }

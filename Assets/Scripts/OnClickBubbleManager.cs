@@ -9,8 +9,6 @@ public class OnClickBubbleManager : BubbleManager, IPointerDownHandler
     protected override void Update()
     {
         base.Update();
-        //Debug.Log(currentBubble);
-        //Debug.Log(currentBubble.launched);
         launchBehaviour();
     }
 
@@ -25,7 +23,7 @@ public class OnClickBubbleManager : BubbleManager, IPointerDownHandler
             }
             else
             {
-                currentBubble.launchBubble();
+                currentBubble.launchBubble(true);
             }
         }
     }

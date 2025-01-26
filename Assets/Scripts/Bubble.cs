@@ -35,18 +35,19 @@ public class Bubble : MonoBehaviour
         }
     }
 
-    public float launchBubble()
+    public float launchBubble(bool timeLimit)
     {
         launched = true;
         // Set the initial upward velocity
-        rb.linearVelocity = new Vector2(0, initUpSpeed);
-        Destroy(gameObject, displayDuration);  // Destroy after a set duration (or adjust for your needs)
+        rb.linearVelocity = transform.up * initUpSpeed;
+        if(timeLimit) Destroy(gameObject, displayDuration);  // Destroy after a set duration (or adjust for your needs)
         return transform.localScale.x;
     }
 
     // Optionally: You could add a method to destroy it manually
     public void DestroyBubble()
     {
-        Object.Destroy(gameObject);
+        //Play anime 
+        Destroy(gameObject, 0);
     }
 }

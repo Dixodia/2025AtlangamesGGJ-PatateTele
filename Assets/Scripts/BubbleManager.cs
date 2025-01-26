@@ -5,6 +5,8 @@ using UnityEngine.WSA;
 
 public class BubbleManager : MonoBehaviour
 {
+    public bool isActive = false;
+
     public GameObject[] bubblePrefabs;  // Prefab for creating bubbles
     public Transform bubbleParent;   // Parent for all bubbles (optional)
 
@@ -22,7 +24,7 @@ public class BubbleManager : MonoBehaviour
 
     public float defaultBubbleDuration = 5f; // Default duration the bubble stays on screen
 
-    protected List<Bubble> activeBubbles = new List<Bubble>();  // List to store active bubbles
+    public List<Bubble> activeBubbles = new List<Bubble>();  // List to store active bubbles
 
     protected virtual void Start()
     {
@@ -34,18 +36,21 @@ public class BubbleManager : MonoBehaviour
         currentPrefab = bubblePrefabs[0];
     }
 
-    protected virtual void UpdateUpdate()
+    protected virtual void Update()
     {
-        // Check if any condition is met to remove bubbles (this can be customized)
-        for (int i = activeBubbles.Count - 1; i >= 0; i--)
+        if (isActive)
         {
-            // Example condition: If the bubble has exceeded its lifetime, destroy it
-            Bubble bubble = activeBubbles[i];
-            if (bubble == null)
+            // Check if any condition is met to remove bubbles (this can be customized)
+            for (int i = activeBubbles.Count - 1; i >= 0; i--)
             {
-                activeBubbles.RemoveAt(i);
+                // Example condition: If the bubble has exceeded its lifetime, destroy it
+                Bubble bubble = activeBubbles[i];
+                if (bubble == null)
+                {
+                    activeBubbles.RemoveAt(i);
+                }
             }
-        }
+        }          
     }
 
     protected virtual void ShowNextBubble()
