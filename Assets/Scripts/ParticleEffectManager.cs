@@ -21,7 +21,7 @@ public class ParticleEffectManager : MonoBehaviour
         }
 
         // Instantiate the particle effect at the target transform's position, rotation, and scale
-        GameObject particleEffect = Instantiate(particleEffectPrefab, targetTransform.position, targetTransform.rotation);
+        GameObject particleEffect = Instantiate(particleEffectPrefab, targetTransform.position + Vector3.back * -0.1f, targetTransform.rotation);
 
         // Optionally, if you want the particle effect to scale with the target transform:
         particleEffect.transform.localScale = targetTransform.localScale;

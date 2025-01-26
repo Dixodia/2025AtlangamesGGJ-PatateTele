@@ -22,6 +22,8 @@ public class DisputeFriend : BubbleManager, IPointerDownHandler
 
     public float conversationIntensity = 0;
 
+    [SerializeField] Color intenseColor = Color.red;
+
     protected override void Update()
     {
         base.Update();
@@ -52,6 +54,7 @@ public class DisputeFriend : BubbleManager, IPointerDownHandler
         if (!convIsStopped)
         {
             conversationIntensity += 1;
+            currentColor = Color.Lerp(Color.white, intenseColor, conversationIntensity / intensityFireThreshold);
             ShowNextBubble();
             float newScale = initScaleFactor * currentBubble.transform.localScale.x * (1 + conversationIntensity / 40);
             currentBubble.transform.localScale = new Vector3(newScale, newScale, 1);

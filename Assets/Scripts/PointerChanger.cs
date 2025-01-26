@@ -7,6 +7,11 @@ public class PointerChanger : MonoBehaviour
     public LayerMask clickableLayer;   // Layer for clickable objects
     public Camera cam;
 
+
+    private void Awake()
+    {
+        
+    }
     void Update()
     {
         ChangeCursorOnHover();
