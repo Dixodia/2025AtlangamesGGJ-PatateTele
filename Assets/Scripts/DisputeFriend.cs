@@ -90,6 +90,6 @@ public class DisputeFriend : BubbleManager, IPointerDownHandler
 
     protected override Vector3 generateDecalage()
     {
-        return new Vector3(Random.Range(0, xSpawnAmplitude), Random.Range(0, ySpawnAmplitude), 0);
+        return new Vector3(Random.Range(-xSpawnAmplitude, 0), Random.Range(0, ySpawnAmplitude), 0);
     }
 }

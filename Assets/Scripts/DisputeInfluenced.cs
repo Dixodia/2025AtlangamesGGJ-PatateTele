@@ -14,6 +14,6 @@ public class DisputeInfluenced : BubbleManager
 
     protected override Vector3 generateDecalage()
     {
-        return new Vector3(xSpawnAmplitude, 0, 0);
+        return new Vector3(-xSpawnAmplitude, 0, 0);
     }
 }

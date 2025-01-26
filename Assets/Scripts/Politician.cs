@@ -6,7 +6,8 @@ public class Politician : OnClickBubbleManager
     [SerializeField] SpectatorManager spectator;
     [SerializeField] float xBaseDecalage;
     int colorNb = 0;
-    Color[] colorSet;
+    //[ColorUsageAttribute(false, false)]
+    [SerializeField] Color[] colorSet;
 
     public override void OnPointerDown(PointerEventData evData)
     {

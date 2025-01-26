@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SceneManager : MonoBehaviour
@@ -5,7 +6,7 @@ public class SceneManager : MonoBehaviour
     public static SceneManager instance;
     [SerializeField] GameObject[] scenePackages;
 
-    [SerializeField] int sceneNb = 0;
+    [SerializeField] int sceneNb;
 
     //Scene 1
     int consecutiveRedMessages = 0;
@@ -21,14 +22,24 @@ public class SceneManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
+        sceneNb -= 1;
         instance = this;
-        for (int i = 1; i < scenePackages.Length; i++)
+        for (int i = 0; i < scenePackages.Length; i++)
         {
-            foreach (BubbleManager manager in scenePackages[sceneNb].GetComponentsInChildren<BubbleManager>())
+            foreach (BubbleManager manager in scenePackages[i].GetComponentsInChildren<BubbleManager>())
             {
                 manager.enabled = false;
             }
         }
+
+        foreach (BubbleManager manager in scenePackages[sceneNb].GetComponentsInChildren<BubbleManager>())
+        {
+            manager.enabled = true;
+        }
+    }
+    private void Start()
+    {
+        CameraManager.instance.init(sceneNb);
     }
 
     // Update is called once per frame
@@ -70,14 +81,14 @@ public class SceneManager : MonoBehaviour
 
         foreach (BubbleManager manager in scenePackages[sceneNb].GetComponentsInChildren<BubbleManager>())
         {
-            manager.isActive = false;
+            manager.enabled = false;
         }
 
 
         sceneNb++;
         foreach (BubbleManager manager in scenePackages[sceneNb].GetComponentsInChildren<BubbleManager>())
         {
-            manager.isActive = true;
+            manager.enabled = true;
         }
     } 
 }

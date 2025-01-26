@@ -8,15 +8,16 @@ public class CameraManager : MonoBehaviour
     
     [SerializeField] CinemachineCamera[] cameras;
 
-    [SerializeField] int camIndex = 0;
+    [SerializeField] public int camIndex = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
         instance = this;
     }
 
-    void Start()
+    public void init(int nb)
     {
+        camIndex = nb;
         cameras[camIndex].enabled = true;
 
         for (int i = 0; i < cameras.Length; i++)
